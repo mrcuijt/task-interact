@@ -1,0 +1,45 @@
+server:
+  servlet:
+    #context-path: /tools
+    context-path: /
+  ssl:
+    key-store: classpath:nginxca.p12
+    key-store-password: changeit
+    key-store-type: PKCS12
+spring:
+  profiles:
+    active: dev
+  resources:
+    static-locations:
+      - classpath:/static/
+      - classpath:/templates/
+      - classpath:/tempFile/
+  aop:
+    proxy-target-class: true
+    auto: true
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximumPoolSize: 10
+      minimum-idle: 0
+      connectionTimeout: 30000
+      idleTimeout: 15000
+      maxLifetime: 30000
+      validation-timeout: 300
+      leakDetectionThreshold: 10000
+      connection-test-query: select 1 from dual
+  jms:
+    pub-sub-domain: false
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+
+springboot:
+  fileupload:
+    base-path: D:/tools/upload/
+    directory: upload
+    enable: false
+#logging:
+#  level:
+#    - org.springframework: trace
