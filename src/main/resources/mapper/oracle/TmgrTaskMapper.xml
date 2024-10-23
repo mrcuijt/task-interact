@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="javax.frame.tools.task_interact.modules.task.mapper.TmgrTaskMapper">
+  <resultMap id="BaseResultMap" type="javax.frame.tools.task_interact.modules.task.model.TmgrTask">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="TASK_NAME" jdbcType="VARCHAR" property="taskName" />
+    <result column="TASK_TYPE" jdbcType="VARCHAR" property="taskType" />
+    <result column="TASK_NO" jdbcType="VARCHAR" property="taskNo" />
+    <result column="EXPECTED_NUM" jdbcType="VARCHAR" property="expectedNum" />
+    <result column="ACTUAL_NUM" jdbcType="VARCHAR" property="actualNum" />
+    <result column="OVER_REASON" jdbcType="VARCHAR" property="overReason" />
+    <result column="USE_FLAG" jdbcType="VARCHAR" property="useFlag" />
+    <result column="INPUT_DATE" jdbcType="BIGINT" property="inputDate" typeHandler="javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler" />
+    <result column="INPUT_TIME" jdbcType="BIGINT" property="inputTime" typeHandler="javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler" />
+    <result column="UPDATE_DATE" jdbcType="BIGINT" property="updateDate" typeHandler="javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler" />
+    <result column="UPDATE_TIME" jdbcType="BIGINT" property="updateTime" typeHandler="javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, TASK_NAME, TASK_TYPE, TASK_NO, EXPECTED_NUM, ACTUAL_NUM, OVER_REASON, USE_FLAG, 
+    INPUT_DATE, INPUT_TIME, UPDATE_DATE, UPDATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TMGR_TASK
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from TMGR_TASK
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="javax.frame.tools.task_interact.modules.task.model.TmgrTask">
+    insert into TMGR_TASK (ID, TASK_NAME, TASK_TYPE, 
+      TASK_NO, EXPECTED_NUM, ACTUAL_NUM, 
+      OVER_REASON, USE_FLAG, INPUT_DATE, 
+      INPUT_TIME, 
+      UPDATE_DATE, 
+      UPDATE_TIME
+      )
+    values (#{id,jdbcType=VARCHAR}, #{taskName,jdbcType=VARCHAR}, #{taskType,jdbcType=VARCHAR}, 
+      #{taskNo,jdbcType=VARCHAR}, #{expectedNum,jdbcType=VARCHAR}, #{actualNum,jdbcType=VARCHAR}, 
+      #{overReason,jdbcType=VARCHAR}, #{useFlag,jdbcType=VARCHAR}, #{inputDate,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler}, 
+      #{inputTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler}, 
+      #{updateDate,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler}, 
+      #{updateTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="javax.frame.tools.task_interact.modules.task.model.TmgrTask">
+    insert into TMGR_TASK
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="taskName != null">
+        TASK_NAME,
+      </if>
+      <if test="taskType != null">
+        TASK_TYPE,
+      </if>
+      <if test="taskNo != null">
+        TASK_NO,
+      </if>
+      <if test="expectedNum != null">
+        EXPECTED_NUM,
+      </if>
+      <if test="actualNum != null">
+        ACTUAL_NUM,
+      </if>
+      <if test="overReason != null">
+        OVER_REASON,
+      </if>
+      <if test="useFlag != null">
+        USE_FLAG,
+      </if>
+      <if test="inputDate != null">
+        INPUT_DATE,
+      </if>
+      <if test="inputTime != null">
+        INPUT_TIME,
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="taskName != null">
+        #{taskName,jdbcType=VARCHAR},
+      </if>
+      <if test="taskType != null">
+        #{taskType,jdbcType=VARCHAR},
+      </if>
+      <if test="taskNo != null">
+        #{taskNo,jdbcType=VARCHAR},
+      </if>
+      <if test="expectedNum != null">
+        #{expectedNum,jdbcType=VARCHAR},
+      </if>
+      <if test="actualNum != null">
+        #{actualNum,jdbcType=VARCHAR},
+      </if>
+      <if test="overReason != null">
+        #{overReason,jdbcType=VARCHAR},
+      </if>
+      <if test="useFlag != null">
+        #{useFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="inputDate != null">
+        #{inputDate,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+      <if test="inputTime != null">
+        #{inputTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="javax.frame.tools.task_interact.modules.task.model.TmgrTask">
+    update TMGR_TASK
+    <set>
+      <if test="taskName != null">
+        TASK_NAME = #{taskName,jdbcType=VARCHAR},
+      </if>
+      <if test="taskType != null">
+        TASK_TYPE = #{taskType,jdbcType=VARCHAR},
+      </if>
+      <if test="taskNo != null">
+        TASK_NO = #{taskNo,jdbcType=VARCHAR},
+      </if>
+      <if test="expectedNum != null">
+        EXPECTED_NUM = #{expectedNum,jdbcType=VARCHAR},
+      </if>
+      <if test="actualNum != null">
+        ACTUAL_NUM = #{actualNum,jdbcType=VARCHAR},
+      </if>
+      <if test="overReason != null">
+        OVER_REASON = #{overReason,jdbcType=VARCHAR},
+      </if>
+      <if test="useFlag != null">
+        USE_FLAG = #{useFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="inputDate != null">
+        INPUT_DATE = #{inputDate,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+      <if test="inputTime != null">
+        INPUT_TIME = #{inputTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE = #{updateDate,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="javax.frame.tools.task_interact.modules.task.model.TmgrTask">
+    update TMGR_TASK
+    set TASK_NAME = #{taskName,jdbcType=VARCHAR},
+      TASK_TYPE = #{taskType,jdbcType=VARCHAR},
+      TASK_NO = #{taskNo,jdbcType=VARCHAR},
+      EXPECTED_NUM = #{expectedNum,jdbcType=VARCHAR},
+      ACTUAL_NUM = #{actualNum,jdbcType=VARCHAR},
+      OVER_REASON = #{overReason,jdbcType=VARCHAR},
+      USE_FLAG = #{useFlag,jdbcType=VARCHAR},
+      INPUT_DATE = #{inputDate,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      INPUT_TIME = #{inputTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      UPDATE_DATE = #{updateDate,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      UPDATE_TIME = #{updateTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

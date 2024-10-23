@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="javax.frame.tools.task_interact.modules.websocket.mapper.AuthLogMapper">
+  <resultMap id="BaseResultMap" type="javax.frame.tools.task_interact.modules.websocket.model.AuthLog">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="USER_ID" jdbcType="VARCHAR" property="userId" />
+    <result column="REQ_TIME" jdbcType="BIGINT" property="reqTime" typeHandler="javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler" />
+    <result column="REQ_DATA" jdbcType="VARCHAR" property="reqData" />
+    <result column="REQ_RESULT" jdbcType="VARCHAR" property="reqResult" />
+    <result column="PROCESS_TIME" jdbcType="BIGINT" property="processTime" typeHandler="javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler" />
+    <result column="INPUT_DATE" jdbcType="BIGINT" property="inputDate" typeHandler="javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler" />
+    <result column="INPUT_TIME" jdbcType="BIGINT" property="inputTime" typeHandler="javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler" />
+    <result column="UPDATE_DATE" jdbcType="BIGINT" property="updateDate" typeHandler="javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler" />
+    <result column="UPDATE_TIME" jdbcType="BIGINT" property="updateTime" typeHandler="javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, USER_ID, REQ_TIME, REQ_DATA, REQ_RESULT, PROCESS_TIME, INPUT_DATE, INPUT_TIME, 
+    UPDATE_DATE, UPDATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from AUTH_LOG
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from AUTH_LOG
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="javax.frame.tools.task_interact.modules.websocket.model.AuthLog">
+    insert into AUTH_LOG (ID, USER_ID, REQ_TIME, 
+      REQ_DATA, REQ_RESULT, PROCESS_TIME, 
+      INPUT_DATE, 
+      INPUT_TIME, 
+      UPDATE_DATE, 
+      UPDATE_TIME
+      )
+    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{reqTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler}, 
+      #{reqData,jdbcType=VARCHAR}, #{reqResult,jdbcType=VARCHAR}, #{processTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler}, 
+      #{inputDate,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler}, 
+      #{inputTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler}, 
+      #{updateDate,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler}, 
+      #{updateTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="javax.frame.tools.task_interact.modules.websocket.model.AuthLog">
+    insert into AUTH_LOG
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="reqTime != null">
+        REQ_TIME,
+      </if>
+      <if test="reqData != null">
+        REQ_DATA,
+      </if>
+      <if test="reqResult != null">
+        REQ_RESULT,
+      </if>
+      <if test="processTime != null">
+        PROCESS_TIME,
+      </if>
+      <if test="inputDate != null">
+        INPUT_DATE,
+      </if>
+      <if test="inputTime != null">
+        INPUT_TIME,
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="reqTime != null">
+        #{reqTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+      <if test="reqData != null">
+        #{reqData,jdbcType=VARCHAR},
+      </if>
+      <if test="reqResult != null">
+        #{reqResult,jdbcType=VARCHAR},
+      </if>
+      <if test="processTime != null">
+        #{processTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+      <if test="inputDate != null">
+        #{inputDate,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+      <if test="inputTime != null">
+        #{inputTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="javax.frame.tools.task_interact.modules.websocket.model.AuthLog">
+    update AUTH_LOG
+    <set>
+      <if test="userId != null">
+        USER_ID = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="reqTime != null">
+        REQ_TIME = #{reqTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+      <if test="reqData != null">
+        REQ_DATA = #{reqData,jdbcType=VARCHAR},
+      </if>
+      <if test="reqResult != null">
+        REQ_RESULT = #{reqResult,jdbcType=VARCHAR},
+      </if>
+      <if test="processTime != null">
+        PROCESS_TIME = #{processTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+      <if test="inputDate != null">
+        INPUT_DATE = #{inputDate,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+      <if test="inputTime != null">
+        INPUT_TIME = #{inputTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE = #{updateDate,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="javax.frame.tools.task_interact.modules.websocket.model.AuthLog">
+    update AUTH_LOG
+    set USER_ID = #{userId,jdbcType=VARCHAR},
+      REQ_TIME = #{reqTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      REQ_DATA = #{reqData,jdbcType=VARCHAR},
+      REQ_RESULT = #{reqResult,jdbcType=VARCHAR},
+      PROCESS_TIME = #{processTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      INPUT_DATE = #{inputDate,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      INPUT_TIME = #{inputTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      UPDATE_DATE = #{updateDate,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      UPDATE_TIME = #{updateTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

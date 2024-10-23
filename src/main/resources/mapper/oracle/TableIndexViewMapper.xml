@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="javax.frame.tools.task_interact.modules.task.mapper.TableIndexViewMapper">
+  <resultMap id="BaseResultMap" type="javax.frame.tools.task_interact.modules.task.model.TableIndexView">
+    <id column="ID" jdbcType="NUMERIC" property="id" />
+    <result column="TB_NAME" jdbcType="VARCHAR" property="tbName" />
+    <result column="TB_CREATE" jdbcType="VARCHAR" property="tbCreate" />
+    <result column="TB_INDEX" jdbcType="VARCHAR" property="tbIndex" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, TB_NAME, TB_CREATE, TB_INDEX
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TABLE_INDEX_VIEW
+    where ID = #{id,jdbcType=NUMERIC}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from TABLE_INDEX_VIEW
+    where ID = #{id,jdbcType=NUMERIC}
+  </delete>
+  <insert id="insert" parameterType="javax.frame.tools.task_interact.modules.task.model.TableIndexView">
+    insert into TABLE_INDEX_VIEW (ID, TB_NAME, TB_CREATE, 
+      TB_INDEX)
+    values (#{id,jdbcType=NUMERIC}, #{tbName,jdbcType=VARCHAR}, #{tbCreate,jdbcType=VARCHAR}, 
+      #{tbIndex,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="javax.frame.tools.task_interact.modules.task.model.TableIndexView">
+    insert into TABLE_INDEX_VIEW
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="tbName != null">
+        TB_NAME,
+      </if>
+      <if test="tbCreate != null">
+        TB_CREATE,
+      </if>
+      <if test="tbIndex != null">
+        TB_INDEX,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=NUMERIC},
+      </if>
+      <if test="tbName != null">
+        #{tbName,jdbcType=VARCHAR},
+      </if>
+      <if test="tbCreate != null">
+        #{tbCreate,jdbcType=VARCHAR},
+      </if>
+      <if test="tbIndex != null">
+        #{tbIndex,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="javax.frame.tools.task_interact.modules.task.model.TableIndexView">
+    update TABLE_INDEX_VIEW
+    <set>
+      <if test="tbName != null">
+        TB_NAME = #{tbName,jdbcType=VARCHAR},
+      </if>
+      <if test="tbCreate != null">
+        TB_CREATE = #{tbCreate,jdbcType=VARCHAR},
+      </if>
+      <if test="tbIndex != null">
+        TB_INDEX = #{tbIndex,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=NUMERIC}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="javax.frame.tools.task_interact.modules.task.model.TableIndexView">
+    update TABLE_INDEX_VIEW
+    set TB_NAME = #{tbName,jdbcType=VARCHAR},
+      TB_CREATE = #{tbCreate,jdbcType=VARCHAR},
+      TB_INDEX = #{tbIndex,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=NUMERIC}
+  </update>
+</mapper>

@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="javax.frame.tools.task_interact.modules.task.mapper.TmTaskConfigHisLogMapper">
+  <resultMap id="BaseResultMap" type="javax.frame.tools.task_interact.modules.task.model.TmTaskConfigHisLog">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="TNO" jdbcType="VARCHAR" property="tno" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="TYPE" jdbcType="VARCHAR" property="type" />
+    <result column="SUFFIX_LOCAL" jdbcType="VARCHAR" property="suffixLocal" />
+    <result column="SUFFIX_REMOTE" jdbcType="VARCHAR" property="suffixRemote" />
+    <result column="EXPECTED_NUM" jdbcType="VARCHAR" property="expectedNum" />
+    <result column="INCREMENT" jdbcType="VARCHAR" property="increment" />
+    <result column="ACTUAL_NUM" jdbcType="VARCHAR" property="actualNum" />
+    <result column="STATE" jdbcType="VARCHAR" property="state" />
+    <result column="DATA_STATE" jdbcType="VARCHAR" property="dataState" />
+    <result column="EXPECTED_STATE" jdbcType="VARCHAR" property="expectedState" />
+    <result column="BATCH_STATE" jdbcType="VARCHAR" property="batchState" />
+    <result column="MANUAL_STATE" jdbcType="VARCHAR" property="manualState" />
+    <result column="INPUT_DATE" jdbcType="BIGINT" property="inputDate" typeHandler="javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler" />
+    <result column="INPUT_TIME" jdbcType="BIGINT" property="inputTime" typeHandler="javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler" />
+    <result column="UPDATE_DATE" jdbcType="BIGINT" property="updateDate" typeHandler="javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler" />
+    <result column="UPDATE_TIME" jdbcType="BIGINT" property="updateTime" typeHandler="javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, TNO, NAME, TYPE, SUFFIX_LOCAL, SUFFIX_REMOTE, EXPECTED_NUM, INCREMENT, ACTUAL_NUM, 
+    STATE, DATA_STATE, EXPECTED_STATE, BATCH_STATE, MANUAL_STATE, INPUT_DATE, INPUT_TIME, 
+    UPDATE_DATE, UPDATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TM_TASK_CONFIG_HIS_LOG
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from TM_TASK_CONFIG_HIS_LOG
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="javax.frame.tools.task_interact.modules.task.model.TmTaskConfigHisLog">
+    insert into TM_TASK_CONFIG_HIS_LOG (ID, TNO, NAME, 
+      TYPE, SUFFIX_LOCAL, SUFFIX_REMOTE, 
+      EXPECTED_NUM, INCREMENT, ACTUAL_NUM, 
+      STATE, DATA_STATE, EXPECTED_STATE, 
+      BATCH_STATE, MANUAL_STATE, INPUT_DATE, 
+      INPUT_TIME, 
+      UPDATE_DATE, 
+      UPDATE_TIME
+      )
+    values (#{id,jdbcType=VARCHAR}, #{tno,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{suffixLocal,jdbcType=VARCHAR}, #{suffixRemote,jdbcType=VARCHAR}, 
+      #{expectedNum,jdbcType=VARCHAR}, #{increment,jdbcType=VARCHAR}, #{actualNum,jdbcType=VARCHAR}, 
+      #{state,jdbcType=VARCHAR}, #{dataState,jdbcType=VARCHAR}, #{expectedState,jdbcType=VARCHAR}, 
+      #{batchState,jdbcType=VARCHAR}, #{manualState,jdbcType=VARCHAR}, #{inputDate,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler}, 
+      #{inputTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler}, 
+      #{updateDate,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler}, 
+      #{updateTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="javax.frame.tools.task_interact.modules.task.model.TmTaskConfigHisLog">
+    insert into TM_TASK_CONFIG_HIS_LOG
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="tno != null">
+        TNO,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="type != null">
+        TYPE,
+      </if>
+      <if test="suffixLocal != null">
+        SUFFIX_LOCAL,
+      </if>
+      <if test="suffixRemote != null">
+        SUFFIX_REMOTE,
+      </if>
+      <if test="expectedNum != null">
+        EXPECTED_NUM,
+      </if>
+      <if test="increment != null">
+        INCREMENT,
+      </if>
+      <if test="actualNum != null">
+        ACTUAL_NUM,
+      </if>
+      <if test="state != null">
+        STATE,
+      </if>
+      <if test="dataState != null">
+        DATA_STATE,
+      </if>
+      <if test="expectedState != null">
+        EXPECTED_STATE,
+      </if>
+      <if test="batchState != null">
+        BATCH_STATE,
+      </if>
+      <if test="manualState != null">
+        MANUAL_STATE,
+      </if>
+      <if test="inputDate != null">
+        INPUT_DATE,
+      </if>
+      <if test="inputTime != null">
+        INPUT_TIME,
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="tno != null">
+        #{tno,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="suffixLocal != null">
+        #{suffixLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="suffixRemote != null">
+        #{suffixRemote,jdbcType=VARCHAR},
+      </if>
+      <if test="expectedNum != null">
+        #{expectedNum,jdbcType=VARCHAR},
+      </if>
+      <if test="increment != null">
+        #{increment,jdbcType=VARCHAR},
+      </if>
+      <if test="actualNum != null">
+        #{actualNum,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="dataState != null">
+        #{dataState,jdbcType=VARCHAR},
+      </if>
+      <if test="expectedState != null">
+        #{expectedState,jdbcType=VARCHAR},
+      </if>
+      <if test="batchState != null">
+        #{batchState,jdbcType=VARCHAR},
+      </if>
+      <if test="manualState != null">
+        #{manualState,jdbcType=VARCHAR},
+      </if>
+      <if test="inputDate != null">
+        #{inputDate,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+      <if test="inputTime != null">
+        #{inputTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="javax.frame.tools.task_interact.modules.task.model.TmTaskConfigHisLog">
+    update TM_TASK_CONFIG_HIS_LOG
+    <set>
+      <if test="tno != null">
+        TNO = #{tno,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        TYPE = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="suffixLocal != null">
+        SUFFIX_LOCAL = #{suffixLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="suffixRemote != null">
+        SUFFIX_REMOTE = #{suffixRemote,jdbcType=VARCHAR},
+      </if>
+      <if test="expectedNum != null">
+        EXPECTED_NUM = #{expectedNum,jdbcType=VARCHAR},
+      </if>
+      <if test="increment != null">
+        INCREMENT = #{increment,jdbcType=VARCHAR},
+      </if>
+      <if test="actualNum != null">
+        ACTUAL_NUM = #{actualNum,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        STATE = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="dataState != null">
+        DATA_STATE = #{dataState,jdbcType=VARCHAR},
+      </if>
+      <if test="expectedState != null">
+        EXPECTED_STATE = #{expectedState,jdbcType=VARCHAR},
+      </if>
+      <if test="batchState != null">
+        BATCH_STATE = #{batchState,jdbcType=VARCHAR},
+      </if>
+      <if test="manualState != null">
+        MANUAL_STATE = #{manualState,jdbcType=VARCHAR},
+      </if>
+      <if test="inputDate != null">
+        INPUT_DATE = #{inputDate,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+      <if test="inputTime != null">
+        INPUT_TIME = #{inputTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE = #{updateDate,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="javax.frame.tools.task_interact.modules.task.model.TmTaskConfigHisLog">
+    update TM_TASK_CONFIG_HIS_LOG
+    set TNO = #{tno,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=VARCHAR},
+      SUFFIX_LOCAL = #{suffixLocal,jdbcType=VARCHAR},
+      SUFFIX_REMOTE = #{suffixRemote,jdbcType=VARCHAR},
+      EXPECTED_NUM = #{expectedNum,jdbcType=VARCHAR},
+      INCREMENT = #{increment,jdbcType=VARCHAR},
+      ACTUAL_NUM = #{actualNum,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=VARCHAR},
+      DATA_STATE = #{dataState,jdbcType=VARCHAR},
+      EXPECTED_STATE = #{expectedState,jdbcType=VARCHAR},
+      BATCH_STATE = #{batchState,jdbcType=VARCHAR},
+      MANUAL_STATE = #{manualState,jdbcType=VARCHAR},
+      INPUT_DATE = #{inputDate,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      INPUT_TIME = #{inputTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      UPDATE_DATE = #{updateDate,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler},
+      UPDATE_TIME = #{updateTime,jdbcType=BIGINT,typeHandler=javax.frame.tools.task_interact.modules.commons.mybatis.LocalDateTimeTypeHandler}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

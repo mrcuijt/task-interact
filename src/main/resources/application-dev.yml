@@ -1,0 +1,7 @@
+server:
+  port: 443
+spring:
+  profiles:
+    include:
+      - dev-datasource
+      - dev-mybatis
