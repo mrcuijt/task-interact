@@ -21,6 +21,8 @@ public enum CommandEnum {
 
     DANMUK_NOTIFY("弹幕通知"),
 
+    DANMUK_MSG_ROLLING("弹幕获取"),
+
     DANMUK_MSG_RESET_PROGRESS("弹幕消息进度重置"),
 
 
