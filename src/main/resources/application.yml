@@ -1,7 +1,7 @@
 server:
   servlet:
-    #context-path: /tools
-    context-path: /
+    context-path: /tools
+    #context-path: /
   ssl:
     key-store: classpath:nginxca.p12
     key-store-password: changeit

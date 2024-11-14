@@ -12,10 +12,9 @@ import java.net.URI;
 import java.security.KeyStore;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.Executor;
 
 @Slf4j
-public class SimpleHttpsServer {
+public class SimpleHttpsServerImgConvert {
 
     public static void main(String[] args) {
         run();
@@ -24,7 +23,7 @@ public class SimpleHttpsServer {
     public static void run() {
         HttpsServer httpsServer = getHttpsServer();
         HttpContext context = httpsServer.createContext("/");
-        context.setHandler(SimpleHttpsServer::handleRequest);
+        context.setHandler(SimpleHttpsServerImgConvert::handleRequest);
         httpsServer.start();
         System.out.println("Start HTTPS server on port " + port + " of localhost");
     }
@@ -128,12 +127,14 @@ public class SimpleHttpsServer {
                 //System.out.println(boundary + prefix);
                 DataItem dataItem = new DataItem(items);
                 List<byte[]> datas = dataItem.datas(prefix, suffix);
-                File file = new File(basePath, dataItem.getRoomId());
+                //File file = new File(basePath, dataItem.getRoomId());
+                File file = new File(basePath, "img");
                 if (!file.exists()){
                     file.mkdirs();
                 }
                 datas.stream().forEach(f -> {
                     File danmuk = new File(file, dataItem.getRoomId() + "-" + IdWorker.getIdStr() + ".json");
+                    danmuk = new File(file, dataItem.getRoomId());
                     try {
                         // String s = new String(Arrays.copyOf(f, DataItem.newLength(f)));
                         // System.out.println(s);
@@ -166,7 +167,7 @@ public class SimpleHttpsServer {
             // Initialise the keystore
             char[] password = sslKeyStorePassword.toCharArray();
             KeyStore ks = KeyStore.getInstance("JKS");
-            BufferedInputStream fis = new BufferedInputStream(SimpleHttpsServer.class.getClass().getResourceAsStream(sslKeyStore));
+            BufferedInputStream fis = new BufferedInputStream(SimpleHttpsServerImgConvert.class.getClass().getResourceAsStream(sslKeyStore));
             ks.load(fis, password);
 
             // Set up the key manager factory

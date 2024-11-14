@@ -95,6 +95,7 @@ public class CommandEndpoint {
     @OnError
     public void onError(Throwable t) throws Throwable {
         System.out.println("WebSocket 服务端错误" + t);
+        t.printStackTrace();
     }
 
     // 实现广播消息的工具方法
