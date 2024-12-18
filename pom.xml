@@ -155,7 +155,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.br.creditapprove.RootApplication</mainClass>
+                    <mainClass>javax.frame.tools.task_interact.modules.RootApplication</mainClass>
                     <jvmArguments>-Dfile.encoding=UTF-8 -Xdebug
                         -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005
                     </jvmArguments>
